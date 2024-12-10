@@ -1,8 +1,8 @@
+import clsx from "clsx";
 import Link from "next/link";
 import React from 'react';
 import {initialTickets} from "@/tickets";
 import {ticketPath} from "@/utilities/path";
-import clsx from "clsx";
 
 const ticketIcons ={
     open: 'O',
