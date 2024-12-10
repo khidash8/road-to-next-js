@@ -3,6 +3,13 @@ import React from 'react';
 import {initialTickets} from "@/tickets";
 import {ticketPath} from "@/utilities/path";
 
+const ticketIcons ={
+    open: 'O',
+    inProgress: 'P',
+    done: 'D',
+    closed: '🔒'
+}
+
 const TicketsPage = () => {
     return (
         <div className={'flex flex-col gap-2 items-center justify-center'}>
@@ -11,7 +18,7 @@ const TicketsPage = () => {
                 <div key={ticket.id} className={'border p-2 w-full mx-3'}>
                     <h2 className={'text-lg'}>{ticket.title}</h2>
                     <p>{ticket.description}</p>
-                    <p>{ticket.status}</p>
+                    <p>{ticketIcons[ticket.status]}</p>
                     <Link href={ticketPath(ticket.id)} className={'underline w-full flex justify-center'}>View
                         Ticket</Link>
                 </div>
