@@ -2,10 +2,10 @@ import clsx from "clsx";
 import {LucideCircleCheck, LucideFileText, LucidePencil} from "lucide-react";
 import Link from "next/link";
 import React from 'react';
+import {Header} from "@/components/header";
 import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {initialTickets} from "@/tickets";
 import {ticketPath} from "@/utilities/path";
-import {Header} from "@/components/header";
 
 const ticketIcons = {
     open: <LucideFileText />,
