@@ -30,7 +30,7 @@ export default function RootLayout({
         <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-        <nav className={`flex justify-center items-center
+        <nav className={`flex justify-between items-center
                          animate-header-from-top
                          supports-backdrop-blur:bg-background/60
                          fixed left-0 right-0 top-0 z-20
