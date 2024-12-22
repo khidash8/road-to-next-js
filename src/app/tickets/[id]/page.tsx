@@ -1,8 +1,8 @@
 import Link from "next/link";
 import PlaceHolder from "@/components/placeHolder";
+import {Button} from "@/components/ui/button";
 import {initialTickets} from "@/tickets";
 import {ticketsPath} from "@/utilities/path";
-import {Button} from "@/components/ui/button";
 
 interface TicketProps {
     params: {
