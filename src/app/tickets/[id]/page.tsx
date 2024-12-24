@@ -3,6 +3,7 @@ import PlaceHolder from "@/components/placeHolder";
 import {Button} from "@/components/ui/button";
 import {initialTickets} from "@/tickets";
 import {ticketsPath} from "@/utilities/path";
+import TicketItem from "@/features/ticket/components/ticketItem";
 
 interface TicketProps {
     params: {
@@ -27,11 +28,7 @@ const TicketPage = ({params}: TicketProps) => {
 
     return (
         <div>
-            <h1>ticket {params.id} page</h1>
-            <h2>{ticket.title}</h2>
-            <p>{ticket.description}</p>
-            <p>{ticket.status}</p>
-            <Link href={ticketsPath()} className={'underline uppercase'}>Go to tickets</Link>
+            <TicketItem ticket={ticket} isDetail/>
         </div>
     );
 };

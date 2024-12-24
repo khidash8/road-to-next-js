@@ -1,18 +1,19 @@
 import clsx from "clsx";
+import {LucideSquareArrowOutUpRight} from "lucide-react";
 import Link from "next/link";
 import React from 'react';
-import {Card, CardContent, CardFooter, CardHeader, CardTitle} from '@/components/ui/card';
+import {Button} from "@/components/ui/button";
+import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import {ticketIcons} from "@/features/constants";
 import {Ticket} from "@/features/types";
 import {ticketPath} from "@/utilities/path";
-import {Button} from "@/components/ui/button";
-import {LucideSquareArrowOutUpRight} from "lucide-react";
 
 type TicketItemProp = {
     ticket: Ticket;
+    isDetail?: boolean;
 }
 
-const TicketItem = ({ticket}: TicketItemProp) => {
+const TicketItem = ({ticket, isDetail}: TicketItemProp) => {
     const detailButton = (
         <Button variant={'outline'} size={'icon'}>
             <Link href={ticketPath(ticket.id)} className={'w-full flex justify-center'}>
@@ -22,7 +23,7 @@ const TicketItem = ({ticket}: TicketItemProp) => {
     )
 
     return (
-        <div className={'w-full max-w-[420px] flex gap-2'}>
+        <div className={'flex gap-2 justify-center w-full max-w-[420px] bg-green-700'}>
             <Card className={'w-full'}>
                 <CardHeader>
                     <CardTitle className={'flex gap-x-2'}>
@@ -33,11 +34,13 @@ const TicketItem = ({ticket}: TicketItemProp) => {
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <span className={'line-clamp-3 whitespace-break-spaces'}>{ticket.description}</span>
+                    <span className={clsx('whitespace-break-spaces',{
+                        'line-clamp-3': !isDetail
+                    })}>{ticket.description}</span>
                 </CardContent>
             </Card>
             <div className={'flex flex-col gap-2'}>
-                {detailButton}
+                {isDetail ? null : detailButton}
             </div>
 
         </div>
