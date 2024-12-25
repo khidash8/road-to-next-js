@@ -2,7 +2,7 @@ import Link from "next/link";
 import PlaceHolder from "@/components/placeHolder";
 import {Button} from "@/components/ui/button";
 import TicketItem from "@/features/ticket/components/ticketItem";
-import {initialTickets} from "@/tickets";
+import {getTicket} from "@/features/ticket/queries/get-ticket";
 import {ticketsPath} from "@/utilities/path";
 
 interface TicketProps {
@@ -11,9 +11,8 @@ interface TicketProps {
     };
 }
 
-const TicketPage = ({params}: TicketProps) => {
-    const ticket =
-        initialTickets.find(ticket => ticket.id === params.id);
+const TicketPage = async ({params}: TicketProps) => {
+    const ticket = await getTicket(params.id)
 
     if (!ticket) {
         return <PlaceHolder
@@ -27,7 +26,7 @@ const TicketPage = ({params}: TicketProps) => {
     }
 
     return (
-        <div>
+        <div className={'flex-1 flex flex-col gap-y-8 items-center self-center w-full max-w-[420px] animate-fade-in-from-top'}>
             <TicketItem ticket={ticket} isDetail/>
         </div>
     );
