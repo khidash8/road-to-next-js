@@ -4,6 +4,7 @@ import {Button} from "@/components/ui/button";
 import TicketItem from "@/features/ticket/components/ticketItem";
 import {getTicket} from "@/features/ticket/queries/get-ticket";
 import {ticketsPath} from "@/utilities/path";
+import {notFound} from "next/navigation";
 
 interface TicketProps {
     params: {
@@ -15,14 +16,7 @@ const TicketPage = async ({params}: TicketProps) => {
     const ticket = await getTicket(params.id)
 
     if (!ticket) {
-        return <PlaceHolder
-            label={'ticket not found'}
-            button={<Button variant={'default'}>
-                <Link href={ticketsPath()}>
-                    Go to tickets
-                </Link>
-            </Button>}
-        />;
+        notFound()
     }
 
     return (

@@ -7,7 +7,7 @@ const TicketsPage = async () => {
 
 
     return (
-        <div className={'flex-1 flex flex-col gap-y-2 items-center'}>
+        <div className={'flex-1 flex flex-col self-center w-full max-w-[420px] gap-y-2 items-center'}>
             <Header title={'Tickets Page'} description={'All your tickets at one place'}/>
 
             <Suspense fallback={<Spinner/>}>
