@@ -1,10 +1,6 @@
-import Link from "next/link";
-import PlaceHolder from "@/components/placeHolder";
-import {Button} from "@/components/ui/button";
+import {notFound} from "next/navigation";
 import TicketItem from "@/features/ticket/components/ticketItem";
 import {getTicket} from "@/features/ticket/queries/get-ticket";
-import {ticketsPath} from "@/utilities/path";
-import {notFound} from "next/navigation";
 
 interface TicketProps {
     params: {
