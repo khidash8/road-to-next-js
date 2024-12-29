@@ -5,8 +5,8 @@ import React from 'react';
 import {Button} from "@/components/ui/button";
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import {ticketIcons} from "@/features/constants";
-import {Ticket} from "@/features/types";
 import {ticketPath} from "@/utilities/path";
+import {Ticket} from "@prisma/client";
 
 type TicketItemProp = {
     ticket: Ticket;
