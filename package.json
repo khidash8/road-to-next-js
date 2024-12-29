@@ -10,7 +10,7 @@
     "lint-fix": "next lint --fix",
     "typecheck": "tsc --noEmit",
     "postinstall": "prisma generate",
-    "prisma": "npx prisma db push",
+    "prisma-db-push": "npx prisma db push",
     "prisma-seed": "tsx prisma/seed.ts",
     "prisma-studio": "npx prisma studio"
   },

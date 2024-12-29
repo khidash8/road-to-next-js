@@ -1,11 +1,14 @@
+"use client"
+
 import {Ticket} from "@prisma/client";
 import clsx from "clsx";
-import {LucideSquareArrowOutUpRight} from "lucide-react";
+import {LucideSquareArrowOutUpRight, LucideTrash2} from "lucide-react";
 import Link from "next/link";
 import React from 'react';
 import {Button} from "@/components/ui/button";
 import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card';
 import {ticketIcons} from "@/features/constants";
+import {deleteTicket} from "@/features/ticket/actions/ticket-delete";
 import {ticketPath} from "@/utilities/path";
 
 type TicketItemProp = {
@@ -14,11 +17,21 @@ type TicketItemProp = {
 }
 
 const TicketItem = ({ticket, isDetail}: TicketItemProp) => {
+    const handleDelete = async () => {
+        await deleteTicket(ticket.id)
+    }
+
     const detailButton = (
         <Button variant={'outline'} size={'icon'}>
             <Link href={ticketPath(ticket.id)} className={'w-full flex justify-center'}>
                 <LucideSquareArrowOutUpRight/>
             </Link>
+        </Button>
+    )
+
+    const deleteButton = (
+        <Button variant={'destructive'} size={'icon'} onClick={handleDelete}>
+            <LucideTrash2/>
         </Button>
     )
 
@@ -34,13 +47,13 @@ const TicketItem = ({ticket, isDetail}: TicketItemProp) => {
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <span className={clsx('whitespace-break-spaces',{
+                    <span className={clsx('whitespace-break-spaces', {
                         'line-clamp-3': !isDetail
                     })}>{ticket.description}</span>
                 </CardContent>
             </Card>
             <div className={'flex flex-col gap-2'}>
-                {isDetail ? null : detailButton}
+                {isDetail ? deleteButton : detailButton}
             </div>
 
         </div>
