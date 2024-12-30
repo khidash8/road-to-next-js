@@ -12,7 +12,8 @@
     "postinstall": "prisma generate",
     "prisma-db-push": "npx prisma db push",
     "prisma-seed": "tsx prisma/seed.ts",
-    "prisma-studio": "npx prisma studio"
+    "prisma-studio": "npx prisma studio",
+    "build and start": "npm run build && npm run start"
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",

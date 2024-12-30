@@ -3,9 +3,7 @@ import TicketItem from "@/features/ticket/components/ticketItem";
 import {getTicket} from "@/features/ticket/queries/get-ticket";
 
 interface TicketProps {
-    params: {
-        id: string;
-    };
+    params: Promise<{ id: string; }>
 }
 
 const TicketPage = async ({params}: TicketProps) => {
