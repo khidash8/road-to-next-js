@@ -1,8 +1,6 @@
-import Link from "next/link";
-import PlaceHolder from "@/components/placeHolder";
-import {Button} from "@/components/ui/button";
-import {initialTickets} from "@/tickets";
-import {ticketsPath} from "@/utilities/path";
+import {notFound} from "next/navigation";
+import TicketItem from "@/features/ticket/components/ticketItem";
+import {getTicket} from "@/features/ticket/queries/get-ticket";
 
 interface TicketProps {
     params: {
@@ -10,28 +8,19 @@ interface TicketProps {
     };
 }
 
-const TicketPage = ({params}: TicketProps) => {
-    const ticket =
-        initialTickets.find(ticket => ticket.id === params.id);
+const TicketPage = async ({params}: TicketProps) => {
+
+    const {id} =await params
+
+    const ticket = await getTicket(id)
 
     if (!ticket) {
-        return <PlaceHolder
-            label={'ticket not found'}
-            button={<Button variant={'default'}>
-                <Link href={ticketsPath()}>
-                    Go to tickets
-                </Link>
-            </Button>}
-        />;
+        notFound()
     }
 
     return (
-        <div>
-            <h1>ticket {params.id} page</h1>
-            <h2>{ticket.title}</h2>
-            <p>{ticket.description}</p>
-            <p>{ticket.status}</p>
-            <Link href={ticketsPath()} className={'underline uppercase'}>Go to tickets</Link>
+        <div className={'flex-1 flex flex-col gap-y-8 items-center self-center w-full max-w-[420px] animate-fade-in-from-top'}>
+            <TicketItem ticket={ticket} isDetail/>
         </div>
     );
 };
